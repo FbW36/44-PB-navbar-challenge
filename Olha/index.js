@@ -150,11 +150,10 @@ const INPUT = [
 	}
 ];
 
-// in each object, there is a path property.
-// in many, + an options property with an array as its value.
-// this array might also consist of objects that also have an 'options' property.
-// every options.path points at a string which I need to retrieve
-// return format: array with object. each object has 1 property — 'params'. the latter points at an object with 'page' as key and a retrieved string as a value
+// in each object, there is a path property which I need to retrieve.
+// in many, there is also an 'options' property with an array as its value.
+// this array might also consist of objects which also have an 'options' property.
+
 
 const output = data => {
 	const pathsArray = [];
