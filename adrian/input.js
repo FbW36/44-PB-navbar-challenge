@@ -1,63 +1,3 @@
-//1st solution without recursion (Not very good because just works for this particular)
-//amount of nesting.
-function convertData(input) {
-  const pathsArray = [];
-  input.forEach((entry) => {
-    pathsArray.push({ params: { page: entry.path } });
-    if (entry.options) {
-      for (const object of entry.options) {
-        if (object.path) {
-          pathsArray.push({ params: { page: object.path } });
-        }
-        if (object.options) {
-          for (const obj of object.options) {
-            pathsArray.push({ params: { page: obj.path } });
-          }
-        }
-      }
-    }
-
-    return { params: { page: entry.path } };
-  });
-
-  return pathsArray;
-}
-//2nd solution with recursion. In this case this solution is better because if can
-//search for other nested paths.
-function convertData1(input) {
-  const pathsArray = [];
-
-  function pathFinder(array) {
-    if (array === undefined) {
-      return;
-    }
-    array.forEach((obj) => {
-      pathsArray.push({ params: { page: obj.path } });
-
-      return pathFinder(obj.options);
-    });
-  }
-  pathFinder(input);
-  return pathsArray;
-}
-/* OUTPUT
-
-  [
-  { params: { page: 'docs_web-development' } },
-  { params: { page: 'docs_web-development_javascript' } },
-  { params: { page: 'docs_web-development_javascript_arrays' } },
-  { params: { page: 'docs_web-development_frontend' } },
-  { params: { page: 'docs_web-development_frontend_react' } },
-  { params: { page: 'blogs_blogs' } },
-  { params: { page: 'blogs_blogs_programming' } },
-  { params: { page: 'blogs_blogs_programming_frontend' } },
-  { params: { page: 'blogs_blogs_programming_backend' } },
-  { params: { page: 'blogs_blogs_tec' } },
-  { params: { page: 'blogs_blogs_tec_laptops' } },
-  { params: { page: 'products_prod' } },
-  { params: { page: 'products_prod_laptops' } },
-  { params: { page: 'products_prod_laptops_macbook-16' } }
-] */
 const input = [
   {
     options: [
@@ -205,5 +145,3 @@ const input = [
     __v: 2,
   },
 ];
-// console.log(convertData(input));
-console.log(convertData1(input));
