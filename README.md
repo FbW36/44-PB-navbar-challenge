@@ -1,7 +1,7 @@
 # 45-PB-navbar-challenge
 
 ## This exercise is BONUS 
-* create function accept one argument ( passing INPUT data below as argument ) and return the data look like the OUTPUT format below! 
+* create function accepts one argument ( passing INPUT data below as argument ) and return the data look like the OUTPUT format below! 
 
 ```
 INPUT
