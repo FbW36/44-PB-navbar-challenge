@@ -161,7 +161,10 @@ const output = data => {
 	const findAndPushPaths = arr => {
 		for (let obj of arr) {
 			if (obj['path']) {
-				pathsArray.push(obj['path']);
+				let path = obj['path'].slice(1).replace(/\//g, '_');
+				// console.log(path);
+				// let newpath = path.replace(/\//g, '_');
+				pathsArray.push(path);
 			}
 			if (obj['options']) {
 				let options = obj['options'];
