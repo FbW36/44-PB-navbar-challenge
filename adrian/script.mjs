@@ -10,7 +10,8 @@ function convertData(input) {
       return;
     }
     array.forEach((obj) => {
-      pathsArray.push({ params: { page: obj.path } });
+      let formatedString = obj.path.slice(1).replace(/\//g, "_");
+      pathsArray.push({ params: { page: formatedString } });
 
       return pathFinder(obj.options);
     });
@@ -18,7 +19,6 @@ function convertData(input) {
   pathFinder(input);
   return pathsArray;
 }
-
 console.log(convertData(input));
 
 //
@@ -47,4 +47,3 @@ function convertData1(input) {
 
   return pathsArray;
 }
-// console.log(convertData(input));
